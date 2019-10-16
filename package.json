@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Matsukiyo/jsonrpc.git"
+    "url": "git+https://github.com/Matsukiyo/sjsonrpc.git"
   },
   "keywords": [
     "jsonrpc",
@@ -25,9 +25,9 @@
   "author": "Kiyotaka Matsushita <kiyotaka.86@gmail.com> (https://github.com/Matsukiyo)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Matsukiyo/jsonrpc/issues"
+    "url": "https://github.com/Matsukiyo/sjsonrpc/issues"
   },
-  "homepage": "https://github.com/Matsukiyo/jsonrpc#readme",
+  "homepage": "https://github.com/Matsukiyo/sjsonrpc#readme",
   "dependencies": {
     "axios": "^0.19.0"
   },
