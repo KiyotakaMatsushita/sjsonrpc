@@ -1,5 +1,5 @@
 {
-  "name": "jsonrpc",
+  "name": "@kiyotaka86/jsonrpc",
   "version": "0.0.1",
   "description": "simple JSON-RPC 2.0 server and client",
   "main": "index.js",
@@ -43,5 +43,9 @@
     "prettier": "^1.18.2",
     "ts-node": "^8.4.1",
     "typescript": "^3.6.4"
+  },
+  "directories": {
+    "example": "example",
+    "lib": "lib"
   }
 }
