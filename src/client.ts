@@ -1,21 +1,23 @@
-import { jsonrpcId, tJsonrpcReqest, tJsonrpcResponse } from "./types";
+import { JSONRPC_ID, REQUEST, RESPONSE, JSONRPC } from "./types";
 import axios from "axios";
 
 export const client = function(endpoint: string) {
   var count = 1;
   return {
-    send: async function(
+    send: async (
       method: string,
       params: any = {},
-      id: jsonrpcId = null
-    ): Promise<tJsonrpcResponse> {
-      let p: tJsonrpcReqest = {
-        jsonrpc: "2.0",
+      id: JSONRPC_ID = null
+    ): Promise<RESPONSE> => {
+      let p: REQUEST = {
+        jsonrpc: JSONRPC,
         method,
         params,
         id: id || count++
       };
-      return await axios.post(endpoint, p);
+      return await axios.post(endpoint, p).then(res => {
+        return res.data;
+      });
     }
   };
 };

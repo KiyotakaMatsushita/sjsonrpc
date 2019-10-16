@@ -1,4 +1,4 @@
-import { tResponseOnError, tError } from "./types";
+import { ERROR_RESPONSE, ERROR, JSONRPC, JSONRPC_ID } from "./types";
 
 export enum ERROR_CODES {
   PARSE_ERROR = -32700,
@@ -8,9 +8,9 @@ export enum ERROR_CODES {
   INTERNAL_ERROR = -32603
 }
 
-export type tERROR_MESSAGES = { [k in ERROR_CODES]: string };
+export type ERROR_MESSAGES = { [k in ERROR_CODES]: string };
 
-const ERROR_MESSAGES: tERROR_MESSAGES = {
+const ERROR_MESSAGES: ERROR_MESSAGES = {
   [-32700]: "Parse error",
   [-32600]: "Invalid request",
   [-32601]: "Method not found",
@@ -18,20 +18,17 @@ const ERROR_MESSAGES: tERROR_MESSAGES = {
   [-32603]: "Internal error"
 };
 
-export const getErrorResponse = function(
-  code: keyof tERROR_MESSAGES,
-  data?: any
-): tResponseOnError {
-  const error: tError = {
+export const getErrorResponse = (
+  code: keyof ERROR_MESSAGES,
+  id: JSONRPC_ID = null
+): ERROR_RESPONSE => {
+  const error: ERROR = {
     code: Number(code),
     message: ERROR_MESSAGES[code]
   };
-  if (!!data) {
-    error.data = data;
-  }
   return {
-    jsonrpc: "2.0",
+    jsonrpc: JSONRPC,
     error,
-    id: null
+    id
   };
 };
